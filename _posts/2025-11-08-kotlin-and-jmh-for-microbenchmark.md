@@ -10,22 +10,23 @@ author_profile: true
 classes: wide
 ---
 
+> 성능 측정을 위해 코틀린과 JMH를 사용하면서 배운 내용을 정리했습니다.
+
 ## 마이크로 벤치마킹과 JMH
 
-
 Microbenchmarking(마이크로 벤치마킹)이란 커다란 시스템에서 작은 부분의 성능을 측정하는 것을 말합니다.
-[원문](https://stackoverflow.com/questions/2842695/what-is-microbenchmarking)에서는 운영체제에서 시스템 콜의 성능을 측정하는 것을 예시로 들어 설명합니다.
+[참고했던 글](https://stackoverflow.com/questions/2842695/what-is-microbenchmarking)에서는 운영체제에서 시스템 콜의 성능을 측정하는 것을 예시로 들어 설명합니다.
 
-코틀린에서 마이크로벤치마킹을 하기 위해서 **JMH(Java Microbenchmark Harness)**를 사용합니다.
+코틀린에서 마이크로벤치마킹 혹은 성능 분석을 위해서 **JMH(Java Microbenchmark Harness)**를 사용할 수 있습니다.
 하네스(Harness)라는 용어가 낯설어 찾아보니 [Test Harness](https://stackoverflow.com/questions/11625351/what-is-test-harness "Test Harness") 를 찾을 수 있었습니다.
-Test Harness는 테스트 라이브러리를 사용하여 테스트를 실행하고 결과 보고서를 생성하는 모든 작업을 가능하게 하는 것(enabler)입니다.
-즉 **JMH는 복잡한 성능 측정 과정을 편리하게 관리해주는 툴**이라고 생각해볼 수 있었습니다.
+Test Harness는 테스트 라이브러리를 사용하여 테스트를 실행하고 결과 보고서를 생성하는 모든 작업을 가능하게 하는 것(enabler)이라고 합니다.
+결론적으로 **JMH는 복잡한 성능 측정 과정을 편리하게 관리해주는 툴**이라고 생각해볼 수 있었습니다.
 
 ## JMH 사용을 위한 Gradle 환경 설정
 
 [JMH를 사용하기 위해 권장되는 방식](https://github.com/openjdk/jmh?tab=readme-ov-file#basic-considerations)은 Maven을 사용하는 것입니다.
 하지만 Gradle도 커뮤니티에서 지원하는 플러그인을 통해 사용할 수 있습니다.
-아래 코드는 [jmh-gradle-plugin](https://github.com/melix/jmh-gradle-plugin)을 사용하는 Gradle 설정입니다.
+아래 코드는 [jmh-gradle-plugin](https://github.com/melix/jmh-gradle-plugin)을 사용하는 설정입니다.
 
 ```gradle
 plugins {
@@ -34,7 +35,7 @@ plugins {
 ```
 
 해당 플러그인은 기본적으로 JMH 1.37을 사용하며 JMH 버전을 올리고 싶다면 `dependencies`에 직접 설정을 해 줄 수 있습니다.
-아래 코드는 jmh-gradle-plugin에 소개된 예시 코드입니다.
+아래 코드는 [jmh-gradle-plugin](https://github.com/melix/jmh-gradle-plugin)에 소개된 예시 코드입니다.
 
 ```gradle
 dependencies {
@@ -45,16 +46,16 @@ dependencies {
 ```
 
 추가적인 설정 없이 플러그인만 사용한 경우 공식 설명과 달리 JMH의 버전이 1.36임을 확인할 수 있었습니다.
-사용하실 때 확인을 해보시면 좋을 것 같습니다.
+사용하실 때 확인을 해보면 좋을 것 같습니다.
 
 ![jmh-version]({{ site.url }}{{ site.baseurl }}/assets/images/posts/2025-11-08/jmh-version.png)
 
 ## 간단한 벤치마크 만들기
 
 Gradle에서 JMH를 사용하기 위해 `src/jmh/kotlin` 경로에 벤치마크 코드를 작성했습니다.
-JMH는 default 패키지를 지원하지 않으므로 benchmark 패키지를 새로 생성하여 파일을 위치시켰습니다.
+JMH는 default 패키지를 지원하지 않으므로 패키지를 새로 생성하여 파일을 위치시켰습니다.
 작성한 간단한 벤치마크 코드는 다음과 같습니다.
-JMH 벤치마크 클래스는 상속이 가능해야 하므로 `open` 키워드를 사용하지 않으면 `Benchmark classes should not be final` 오류가 발생합니다.
+JMH 벤치마크 클래스는 `open` 키워드를 사용하지 않으면 `Benchmark classes should not be final` 오류가 발생합니다.
 
 ```kotlin
 package benchmark
@@ -75,14 +76,27 @@ open class Benchmark {
 ./gradlew jmh
 ```
 
-환경에 따라 다르겠지만 위 코드의 경우 결과를 얻기까지 약 8분이 소요되었습니다. 결과는 아래와 같습니다.
+결과는 다음과 같으며 6가지의 항목으로 이루어집니다.
 
 ![basic-benchmark]({{ site.url }}{{ site.baseurl }}/assets/images/posts/2025-11-08/basic-benchmark.png)
 
+- `Benchmark`: 벤치마크의 이름을 나타냅니다
+- `Mode`: 벤치마크 모드를 나타내며 `thrpt`는 처리율(Throughtput)입니다
+- `Cnt`: 측정을 위해 실행한 횟수를 의미합니다
+- `Score`: 성능 결과를 나타냅니다
+- `Error`: 결과에 대한 오차를 나타냅니다
+- `Units`: 측정 단위를 나타냅니다
 
-## 벤치마크의 종류
+## 벤치마크 모드
 
-JMH는 처리율(Throughput), 평균 시간(AverageTime) 등 다양한 벤치마크 모드를 지원합니다. 측정할 값은 **@BenchmarkMode** 어노테이션으로 설정할 수 있으며 아래는 평균 시간을 측정하는 코드 예시입니다.
+JMH는 5가지의 벤치마크 모드를 지원합니다. 측정할 값은 `@BenchmarkMode` 어노테이션으로 설정할 수 있습니다. [Operation](https://stackoverflow.com/questions/29284076/what-does-operation-mean-in-jmh)이란 `@Benchmark`메서드의 호출을 의미합니다.
+- 처리율(Throughput)
+- 평균 시간(Average Time) 
+- 샘플 시간(Sample Time): operation에 대한 시간을 샘플링합니다.
+- 단일 실행 시간(Single Shot Time): 한 번의 Operation의 수행 시간을 측정합니다
+- 전체(All): 모든 벤치마크 모드를 수행합니다
+
+다음 코드는 평균 시간을 측정하는 간단한 벤치마크 코드입니다.
 
 ```kotlin
 package benchmark
@@ -100,66 +114,43 @@ open class Benchmark {
 }
 ```
 
-Mode 값이 이전 thrpt와 달리 **avgt**가 되었음을 확인해볼 수 있습니다.
+`Mode` 값이 이전 `thrpt`와 달리 `avgt`가 되었음을 확인해볼 수 있습니다.
 
 ![avgt-benchmark]({{ site.url }}{{ site.baseurl }}/assets/images/posts/2025-11-08/avgt-benchmark.png)
 
+## Fork와 Iteration
 
+[포크는 벤치마크가 수행하는 하위 프로세스입니다.](https://thebackendguy.com/posts/performance-analysis-using-jmh/#forks-and-iterations) 포크는 두 종류의 Iteration으로 구성됩니다. Iteration은 한 번의 반복이 아닌 정해진 시간동안 지속적으로 `@Benchmark` 메서드를 수행합니다.
 
-## 벤치마크의 실행 방식
+- Warmup Iteration: JVM이 최적화하도록 한 후 결과는 버려집니다
+- Measurement Iteration: 실제 결과에 반영되는 측정입니다
 
-`@Fork` 어노테이션을 통해 벤치마크의 실행 방식을 설정할 수 있습니다. 해당 어노테이션은 value와 warmup 파라미터를 가집니다.
+포크 또한 Warmup과 Measurement로 나뉘어 수행되며 자세한 설정은 `@Fork` 어노테이션을 활용해 변경가능합니다.
 
--   `value`: 벤치마크가 실행될 횟수
--   `warmup`: 결과 수집 전 수행할 dry run(practice run) 횟수로 벤치마크 결과에 반영되지 않습니다.
+Warmup은 기본적으로 벤치마크의 일관성을 높이기 위해 사용한다고 합니다.
 
-warm up 과정이 왜 필요한 지에 대해서는 자세히 조사해보지 못했지만 기본적으로 warm up을 통해 벤치마크의 일관성을 높일 수 있다고 합니다.
-`@Fork` 어노테이션은 기본적으로 1번의 횟수는 5번의 반복을 가집니다.
-상세한 설정을 위해서는 `@Measurement`를 통해 벤치마크 실행 횟수를 상세히 조절할 수 있고 `@Warmup`을 통해 마찬가지로 상세한 설정이 가능합니다.
-
-아래 코드는 간단하게 `@Fork` 어노테이션을 활용하는 예시입니다.
-
-실행 모습을 관찰해본 결과 웜업은 `fork`에 대한 웜업과 `value`에 대한 웜업이 실행됩니다.
-
-포크에 대한 웜업은 `fork`를 통해 설정되며.. `Measurement` 횟수와 `Warmup` 횟수를 포함합니다. 실 측정에 대한 포크 횟수는 `value`를 통해서 측정 fork에 대한 설정은 Measurement와 warmup을 통해서
-
--   **포크 웜업 (Fork Warmup)**: `@Fork(warmups=N)`으로 설정하며, 전체 JVM 프로세스를 N번 실행했다가 종료하는 과정입니다. 각 웜업 포크는 실제 측정 포크와 동일하게 내부 이터레이션 웜업과 측정을 모두 수행하지만, 그 결과는 최종 통계에서 제외됩니다.
--   **이터레이션 웜업 (Iteration Warmup)**: `@Warmup(iterations=N)`으로 설정하며, 각 포크(프로세스) 내부에서 실제 측정 전 N번 반복 실행하는 과정입니다. 
-
-n번 시간동안 랜덤한 횟수만큼 실행된다!
-
-operation은 @Benchmark 메서드 
-
-[https://stackoverflow.com/questions/29284076/what-does-operation-mean-in-jmh](https://stackoverflow.com/questions/29284076/what-does-operation-mean-in-jmh)
 
 ## State
 
-State는 벤치마크가 실행되는 동안 특정 상태를 유지하는 데 사용됩니다.
+벤치마크 실행 중 특정 상태를 유지해야 할 때 `@State` 어노테이션을 사용합니다. 이 어노테이션을 클래스에 적용하면 해당하는 상태 객체가 벤치마크 실행 동안 상태를 유지하게 됩니다.
 
-## Blackhole
+### Default State
+
+### @Setup과 @TearDown
+
+### Param
+
+## Batch Size
+
+## Blackhole과 Dead Code Elimination
+
+[빈 함수에 대한 벤치마크를 기준점으로 항상 사용하는 것을 추천한다고 합니다.](https://thebackendguy.com/posts/performance-analysis-using-jmh/#blackholes) 왜냐하면 빈 함수와 성능이 비슷하게 나온다면 JVM의 최적화를 의심할 수 있기 때문입니다.
 
 ## 메모리 할당에 대한 벤치마크 방법
 
 ```gradle
 jmh {
     profilers = listOf("gc")
-}
-```
-
-## 예시: 삽입 정렬에 대한 벤치마크
-
-```kotlin
-fun insertionSort(arr: MutableList<Int>): MutableList<Int> {
-    for (i in 1 until arr.size) {
-        val key = arr[i]
-        var j = i - 1
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j]
-            j -= 1
-        }
-        arr[j + 1] = key
-    }
-    return arr
 }
 ```
 
