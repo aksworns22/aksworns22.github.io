@@ -3,7 +3,6 @@ import { format } from 'date-fns';
 
 import BaseHeader from '~/components/base-header.astro';
 import BaseSns from '~/components/base-sns.astro';
-import CursorEffect from '~/components/cursor-effect.astro';
 import { NAV } from '~/consts';
 import MainLayout from '~/layouts/main-layout.astro';
 import { useI18n } from '~/libs/i18n';
@@ -92,5 +91,4 @@ const renderListItemOpacity = (i: number) => {
     </div>
   </div>
   <div class="h-14"></div>
-  <CursorEffect />
 </MainLayout>
