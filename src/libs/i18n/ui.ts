@@ -10,30 +10,20 @@ export const ui = {
   ko: {
     '404.desc': '관련된 문서를 찾을 수 없습니다.',
     'nav.title': '나의 공간',
-    'nav.writing': '서재',
-    'nav.writing.desc': '인사이트를 보관하는 공간',
-    'nav.note': '수첩',
-    'nav.note.desc': '유용한 지식을 기록하는 공간',
-    'nav.craft': '공방',
-    'nav.craft.desc': '무언가 흥미로운 것을 만드는 공간',
+    'nav.writing': '개발 일기',
+    'nav.writing.desc': '개발하면서 겪은 일과 배운 것',
+    'nav.note': '회고',
+    'nav.note.desc': '경험과 생각',
+    'nav.craft': '프로젝트',
+    'nav.craft.desc': '재밌게 만들어본 것',
     'footer.time': '2023-현재',
     'footer.source': '소스코드',
     'index.name': 'aksworns22',
     'index.desc':
-      `<p>사용자와 <b>부드럽게</b> 상호작용하는 것, 복잡한 것을 <b>단순하고 간편하게</b> 만드는 것에 열광합니다.</p>` +
-      `<p>탐구하고 사색하는 것을 좋아하여 발견한 것을 틈틈이 기록하려 합니다.</p>`,
+      `<p>웅장하고 <b>장대한</b> 프로그램을 만들고 싶습니다.(이름값을 위해서..)</p>` +
+      `<p>개발을 하면서 겪었던 일들과 경험을 틈틈이 기록하려 합니다.</p>`,
     'index.currentWork': `      <p>
-      현재
-      <b>
-        <a class="external-link" href="https://www.kakaocorp.com/page/" target="_blank"
-          >커피나무</a
-        >
-      </b>에서
-      <b>
-        <a class="external-link" href="https://business.kakao.com/" target="_blank"
-          >카카오비즈니스 파트너센터</a
-        >
-      </b>를 개발하고 있습니다.
+      현재 조그만 원룸에서 (넷플릭스를 보며) <b>장대한 미래</b>를 그리고 있습니다.
     </p>`,
     wip: '제작 중입니다...',
   },
