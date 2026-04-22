@@ -18,9 +18,9 @@ export const ui = {
     'nav.craft.desc': '재밌게 만들어본 것',
     'footer.time': '2023-현재',
     'footer.source': '소스코드',
-    'index.name': 'aksworns22',
+    'index.name': '장대한',
     'index.desc':
-      `<p>웅장하고 <b>장대한</b> 프로그램을 만들고 싶습니다.(이름값을 위해서..)</p>` +
+      `<p>웅장하고 <b>장대한</b> 프로그램을 만들고 싶습니다.</p>` +
       `<p>개발을 하면서 겪었던 일들과 경험을 틈틈이 기록하려 합니다.</p>`,
     'index.currentWork': `      <p>
       현재 <b>조그만 원룸</b>에 누워 (넷플릭스를 보며) <b>장대한 미래</b>를 그리고 있습니다.
