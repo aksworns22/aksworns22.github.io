@@ -13,7 +13,7 @@ export const ui = {
     'nav.writing': '개발 일기',
     'nav.writing.desc': '개발하면서 겪은 일과 배운 것',
     'nav.note': '회고',
-    'nav.note.desc': '경험과 생각',
+    'nav.note.desc': '경험한 일들과 생각',
     'nav.craft': '프로젝트',
     'nav.craft.desc': '재밌게 만들어본 것',
     'footer.time': '2023-현재',

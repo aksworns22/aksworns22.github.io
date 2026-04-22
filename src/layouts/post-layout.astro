@@ -11,12 +11,10 @@ import BaseSns from '~/components/base-sns.astro';
 import CopyCodeScript from '~/components/copy-code-script.astro';
 import CopyRight from '~/components/copy-right.astro';
 import DynamicToc from '~/components/dynamic-toc';
-import { GiscusSection } from '~/components/giscus';
 import MediumZoomScript from '~/components/medium-zoom-script.astro';
 import ImageGallery from '~/components/post/image-gallery.astro';
 import PostImage from '~/components/post/post-image.astro';
 import PostPaginator from '~/components/post-paginator.astro';
-import PostRelated from '~/components/post-related.astro';
 import TwoslashFloatingScript from '~/components/twoslash-floating-script.astro';
 import MainLayout from '~/layouts/main-layout.astro';
 import {
@@ -105,8 +103,6 @@ const i18nJsonLd = noI18n
       <BaseSns class="mt-1.5 -ml-1" />
     </div>
     <PostPaginator class="my-7" {prevPost} {nextPost} />
-    <PostRelated class="mt-7 mb-14" {relatedPostList} />
-    <GiscusSection className="my-half-page mx-auto" {lang} client:load />
   </footer>
   <MediumZoomScript />
   <TwoslashFloatingScript />
