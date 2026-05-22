@@ -19,9 +19,7 @@ export const ui = {
     'footer.time': '2023-현재',
     'footer.source': '소스코드',
     'index.name': '장대한',
-    'index.desc':
-      `<p>웅장하고 <b>장대한</b> 프로그램을 만들고 싶습니다.</p>` +
-      `<p>개발을 하면서 겪었던 일들과 경험을 틈틈이 기록하려 합니다.</p>`,
+    'index.desc': `<p>개발을 하면서 겪었던 일들과 경험을 틈틈이 기록하려 합니다.</p>`,
     'index.currentWork': `      <p>
     </p>`,
     wip: '제작 중입니다...',
