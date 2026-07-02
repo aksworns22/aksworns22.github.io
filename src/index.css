@@ -7,8 +7,8 @@
   --text: #1b1b18;
   --muted: #a5a094;
   --rule: #d9d5c8;
-  --toggle-track: #1b1b18;
-  --toggle-knob: #f1eee4;
+  --toggle-track: #f1eee4;
+  --toggle-knob: #1b1b18;
 }
 
 :root[data-theme='dark'] {
@@ -16,8 +16,8 @@
   --text: #efece2;
   --muted: #6e6c64;
   --rule: #34342f;
-  --toggle-track: #efece2;
-  --toggle-knob: #1c1c1a;
+  --toggle-track: #1c1c1a;
+  --toggle-knob: #efece2;
 }
 
 * {
@@ -56,13 +56,14 @@ a:hover {
 .site-header {
   display: flex;
   align-items: center;
-  padding: 34px 0 20px;
+  padding: 48px 0 40px;
 }
 
 .site-header .brand {
   font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: -0.01em;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   text-decoration: none;
 }
 
@@ -73,14 +74,14 @@ a:hover {
 /* ---------- Dark mode toggle ---------- */
 .theme-toggle {
   position: relative;
-  width: 46px;
-  height: 24px;
+  width: 52px;
+  height: 30px;
   border-radius: 999px;
-  border: none;
+  border: 1px solid var(--rule);
   cursor: pointer;
   padding: 0;
   background: var(--toggle-track);
-  transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
   flex-shrink: 0;
 }
 
@@ -88,8 +89,8 @@ a:hover {
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--toggle-knob);
   transition: transform 0.25s ease, background-color 0.25s ease;
@@ -168,13 +169,14 @@ a:hover {
   justify-content: space-between;
   max-width: 640px;
   margin: 0 auto;
-  padding: 34px 24px 20px;
+  padding: 48px 24px 40px;
 }
 
 .writing-header .brand {
   font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: -0.01em;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   text-decoration: none;
 }
 
