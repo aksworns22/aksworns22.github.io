@@ -34,20 +34,6 @@ export default function Home() {
         </section>
       )}
 
-      {profile.techStack?.length > 0 && (
-        <section className="section">
-          <h2>기술 스택</h2>
-          <div className="tech-stack">
-            {profile.techStack.map((group) => (
-              <div className="stack-row" key={group.label}>
-                <span className="stack-label">{group.label}</span>
-                <span>{group.items.join(' · ')}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       {profile.awards?.length > 0 && (
         <section className="section">
           <h2>수상 기록</h2>

@@ -13,11 +13,6 @@ export const profile = {
     { label: '신세계리테일테크 코딩교실', value: '2024 · 6개월 교육봉사 활동' },
   ],
 
-  techStack: [
-    { label: '언어', items: ['Kotlin', 'Python'] },
-    { label: '데이터베이스', items: ['MySQL', 'Neo4J'] },
-  ],
-
   awards: [
     {
       title: '교내 해커톤 우수상',
