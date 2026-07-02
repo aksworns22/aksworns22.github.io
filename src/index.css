@@ -164,6 +164,24 @@ a:hover {
   flex-shrink: 0;
 }
 
+.tech-stack {
+  margin-top: 0.4rem;
+}
+
+.tech-stack .stack-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.12rem;
+  margin: 0.5rem 0;
+  align-items: baseline;
+}
+
+.tech-stack .stack-label {
+  color: var(--muted);
+  min-width: 84px;
+  flex-shrink: 0;
+}
+
 .award-list li {
   display: flex;
   flex-direction: column;

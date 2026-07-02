@@ -12,6 +12,11 @@ export const profile = {
     { label: '우아한테크코스 8기', value: '안드로이드' },
   ],
 
+  techStack: [
+    { label: '언어', items: ['Kotlin', 'Python'] },
+    { label: '데이터베이스', items: ['MySQL', 'Neo4J'] },
+  ],
+
   awards: [
     {
       title: '교내 해커톤 우수상',
