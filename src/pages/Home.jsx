@@ -47,21 +47,6 @@ export default function Home() {
           </ul>
         </section>
       ))}
-
-      {profile.links?.length > 0 && (
-        <section className="section">
-          <h2>Links</h2>
-          <ul>
-            {profile.links.map((l) => (
-              <li key={l.label}>
-                <a href={l.href} target="_blank" rel="noreferrer">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
     </div>
   )
 }
