@@ -36,7 +36,7 @@ export default function Home() {
 
       {profile.awards?.length > 0 && (
         <section className="section">
-          <h2>Awards</h2>
+          <h2>수상 기록</h2>
           <ul className="award-list">
             {profile.awards.map((award) => (
               <li key={`${award.title}-${award.event}`}>
