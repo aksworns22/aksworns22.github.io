@@ -34,6 +34,25 @@ export default function Home() {
         </section>
       )}
 
+      {profile.awards?.length > 0 && (
+        <section className="section">
+          <h2>Awards</h2>
+          <ul className="award-list">
+            {profile.awards.map((award) => (
+              <li key={`${award.title}-${award.event}`}>
+                <a href={award.href} target="_blank" rel="noreferrer">
+                  {award.title}
+                </a>
+                <span className="award-detail">
+                  {award.event}
+                  {award.date && <span className="post-date">{award.date}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {groups.map(({ category, items }) => (
         <section className="section" key={category}>
           <h2>{category}</h2>

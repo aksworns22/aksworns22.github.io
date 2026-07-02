@@ -164,6 +164,17 @@ a:hover {
   flex-shrink: 0;
 }
 
+.award-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.award-detail {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
 /* ---------- Essay / Writing page ---------- */
 .writing-header {
   justify-content: space-between;

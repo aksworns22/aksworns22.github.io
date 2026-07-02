@@ -16,6 +16,15 @@ export const profile = {
     { label: '경험', value: '안드로이드 프로젝트, 페어 프로그래밍' },
   ],
 
+  awards: [
+    {
+      title: '교내 해커톤 우수상',
+      event: 'The Pay언한 핀테크 서비스 해커톤',
+      date: '2025',
+      href: 'https://news.unn.net/news/articleView.html?idxno=579686',
+    },
+  ],
+
   // 외부 링크 섹션 (선택). href를 채우면 홈에 "Links" 섹션이 노출됩니다.
   links: [
     { label: 'GitHub', href: 'https://github.com/aksworns22' },
