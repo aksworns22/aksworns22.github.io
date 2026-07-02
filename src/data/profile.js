@@ -21,6 +21,8 @@ export const profile = {
       title: '교내 해커톤 우수상',
       event: 'The Pay언한 핀테크 서비스 해커톤',
       date: '2025',
+      summary:
+        'MCP 초기 생태계에서 이체 정보 등 금융 정보를 연결하고, 음성 기반 제어로 사회취약계층의 금융 접근성을 높이는 서비스를 만들었습니다.',
       href: 'https://news.unn.net/news/articleView.html?idxno=579686',
     },
   ],

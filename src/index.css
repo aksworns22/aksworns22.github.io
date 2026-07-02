@@ -175,6 +175,12 @@ a:hover {
   font-size: 0.98rem;
 }
 
+.award-summary {
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
 /* ---------- Essay / Writing page ---------- */
 .writing-header {
   justify-content: space-between;

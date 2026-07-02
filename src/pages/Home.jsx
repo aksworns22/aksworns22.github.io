@@ -47,6 +47,7 @@ export default function Home() {
                   {award.event}
                   {award.date && <span className="post-date">{award.date}</span>}
                 </span>
+                {award.summary && <span className="award-summary">{award.summary}</span>}
               </li>
             ))}
           </ul>
