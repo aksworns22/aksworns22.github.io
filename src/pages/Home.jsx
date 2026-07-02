@@ -20,14 +20,14 @@ export default function Home() {
         ))}
       </section>
 
-      {profile.facts?.length > 0 && (
+      {profile.education?.length > 0 && (
         <section className="section">
-          <h2>Profile</h2>
+          <h2>교육</h2>
           <div className="facts">
-            {profile.facts.map((f) => (
-              <div className="fact-row" key={f.label}>
-                <span className="fact-label">{f.label}</span>
-                <span>{f.value}</span>
+            {profile.education.map((item) => (
+              <div className="fact-row" key={item.label}>
+                <span className="fact-label">{item.label}</span>
+                <span>{item.value}</span>
               </div>
             ))}
           </div>
