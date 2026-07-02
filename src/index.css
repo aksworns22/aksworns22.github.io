@@ -83,6 +83,7 @@ a:hover {
   background: var(--toggle-track);
   transition: background-color 0.25s ease, border-color 0.25s ease;
   flex-shrink: 0;
+  top: -3px;
 }
 
 .theme-toggle .knob {
