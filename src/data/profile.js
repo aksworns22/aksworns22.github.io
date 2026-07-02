@@ -9,7 +9,7 @@ export const profile = {
 
   education: [
     { label: '광운대학교', value: '컴퓨터정보공학과 · 3.82/4.5' },
-    { label: '우아한테크코스', value: '8th 안드로이드' },
+    { label: '우아한테크코스 8기', value: '안드로이드' },
   ],
 
   awards: [
