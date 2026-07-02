@@ -52,15 +52,10 @@ export default function Writing() {
   return (
     <>
       <header className="writing-header">
-        <Link className="close" to="/" aria-label="닫기">
-          ✕
-        </Link>
         <Link className="brand" to="/">
           {profile.name}
         </Link>
-        <span className="toggle-slot">
-          <ThemeToggle />
-        </span>
+        <ThemeToggle />
       </header>
 
       <div className="writing-layout">
