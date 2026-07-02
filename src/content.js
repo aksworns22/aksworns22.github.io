@@ -55,7 +55,8 @@ function parseDate(value) {
 // can group posts the way the reference design groups Essays / Short posts.
 function deriveCategory(title) {
   const m = /^\s*\[([^\]]+)\]/.exec(title || '')
-  return m ? m[1].trim() : '글'
+  const category = m ? m[1].trim() : '글'
+  return category === '우아한테크코스' ? '회고/기록' : category
 }
 
 function cleanTitle(title) {
