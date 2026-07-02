@@ -74,8 +74,8 @@ a:hover {
 /* ---------- Dark mode toggle ---------- */
 .theme-toggle {
   position: relative;
-  width: 56px;
-  height: 30px;
+  width: 46px;
+  height: 25px;
   border-radius: 999px;
   border: 1px solid var(--muted);
   cursor: pointer;
@@ -88,9 +88,9 @@ a:hover {
 .theme-toggle .knob {
   position: absolute;
   top: 50%;
-  left: 4px;
-  width: 21px;
-  height: 21px;
+  left: 3px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
   background: var(--toggle-knob);
   transform: translateY(-50%);
@@ -98,7 +98,7 @@ a:hover {
 }
 
 :root[data-theme='dark'] .theme-toggle .knob {
-  transform: translate(24px, -50%);
+  transform: translate(21px, -50%);
 }
 
 /* ---------- Home ---------- */
