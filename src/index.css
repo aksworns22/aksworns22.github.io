@@ -1,6 +1,6 @@
 :root {
   /* Literary serif for Latin, Korean serif that keeps the same editorial mood */
-  --font-serif: 'Newsreader', 'Noto Serif KR', 'Nanum Myeongjo', Georgia, serif;
+  --font-serif: 'Newsreader', 'Maru Buri', 'Nanum Myeongjo', Georgia, serif;
 
   /* Light (default) — warm paper */
   --bg: #f1eee4;
