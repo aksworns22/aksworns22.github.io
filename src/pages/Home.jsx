@@ -22,7 +22,7 @@ export default function Home() {
 
       {profile.education?.length > 0 && (
         <section className="section">
-          <h2>교육</h2>
+          <h2>교육/대외활동</h2>
           <div className="facts">
             {profile.education.map((item) => (
               <div className="fact-row" key={item.label}>
