@@ -166,28 +166,14 @@ a:hover {
 
 /* ---------- Essay / Writing page ---------- */
 .writing-header {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
   padding: 48px 24px 40px;
 }
 
-.writing-header .brand {
-  font-weight: 700;
-  font-size: 2rem;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  text-decoration: none;
-}
-
-.writing-header .brand:hover {
-  opacity: 1;
-}
-
 .writing-layout {
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
   padding: 0 24px 140px;
 }

@@ -51,7 +51,7 @@ export default function Writing() {
 
   return (
     <>
-      <header className="writing-header">
+      <header className="site-header writing-header">
         <Link className="brand" to="/">
           {profile.name}
         </Link>
