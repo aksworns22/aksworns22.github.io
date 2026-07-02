@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -6,7 +6,7 @@ import ThemeToggle from '../components/ThemeToggle.jsx'
 import { profile } from '../data/profile.js'
 import { getPost } from '../content.js'
 
-// Slug that is stable for both the TOC link and the heading id, Korean-safe.
+// Slug that is stable for heading ids, Korean-safe.
 function slugify(text) {
   return String(text)
     .trim()
@@ -24,53 +24,13 @@ function childrenToText(children) {
   return ''
 }
 
-// Pull top-level (#, ##) headings out of the markdown for the Contents sidebar.
-function extractToc(body) {
-  const toc = []
-  const inCode = { on: false }
-  for (const line of body.split(/\r?\n/)) {
-    if (/^```/.test(line)) {
-      inCode.on = !inCode.on
-      continue
-    }
-    if (inCode.on) continue
-    const m = /^(#{1,2})\s+(.*)$/.exec(line)
-    if (m) {
-      const text = m[2].replace(/[*_`]/g, '').trim()
-      toc.push({ level: m[1].length, text, id: slugify(text) })
-    }
-  }
-  return toc
-}
-
 export default function Writing() {
   const { slug } = useParams()
   const post = getPost(slug)
-  const toc = useMemo(() => (post ? extractToc(post.body) : []), [post])
-  const [activeId, setActiveId] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [slug])
-
-  // Scroll-spy: highlight the section currently near the top of the viewport.
-  useEffect(() => {
-    if (toc.length === 0) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]) setActiveId(visible[0].target.id)
-      },
-      { rootMargin: '0px 0px -70% 0px', threshold: 0 }
-    )
-    toc.forEach(({ id }) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-    return () => observer.disconnect()
-  }, [toc])
 
   if (!post) {
     return (
@@ -104,29 +64,6 @@ export default function Writing() {
       </header>
 
       <div className="writing-layout">
-        {toc.length > 0 && (
-          <nav className="toc">
-            <h3>Contents</h3>
-            <ol>
-              {toc.map((item) => (
-                <li key={item.id} style={{ marginLeft: (item.level - 1) * 12 }}>
-                  <a
-                    href={`#${item.id}`}
-                    className={activeId === item.id ? 'active' : ''}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      const el = document.getElementById(item.id)
-                      if (el) el.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                  >
-                    {item.text}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        )}
-
         <article className="article">
           <h1 className="title">{post.displayTitle}</h1>
           {post.description && <p className="subtitle">{post.description}</p>}
