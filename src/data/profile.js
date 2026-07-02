@@ -21,7 +21,7 @@ export const profile = {
       title: '교내 해커톤 우수상',
       event: 'The Pay언한 핀테크 서비스 해커톤',
       date: '2025',
-      summary: 'MCP로 금융 정보를 연동하고, 음성 제어로 금융 접근성을 높이려는 아이디어를 제안했습니다.',
+      summary: 'MCP로 금융 정보를 연동하고, 음성 제어로 금융 접근성을 높이려는 아이디어를 시도했습니다.',
       href: 'https://news.unn.net/news/articleView.html?idxno=579686',
     },
   ],
